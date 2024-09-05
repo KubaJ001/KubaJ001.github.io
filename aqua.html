@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFun Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo2.png" alt="Logo AquaFun Park" style="float: left; width: 50%;">
+                <h3 style="float: left; width: 50%;">AquaFun Park</h3>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="aqua.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Odkryj relaks i komfort w AquaFun Park</h1>
+            <p>Zapraszamy do AquaFun Park - oazy spokoju i wypoczynku.</p>
+            <a href="oferta.html" class="btn-main">Dowiedz się więcej</a>
+        </div>
+    </section>
+
+    <section class="offer">
+        <div class="container">
+            <h2>Nasza Oferta</h2>
+            <div class="offer-items">
+                <div class="offer-item">
+                    <img src="termy.jpg" alt="Termy">
+                    <h3>Basen termalny</h3>
+                    <p>Oferujemy relaksujące kąpiele w wodach termalnych.</p>
+                </div>
+                <div class="offer-item">
+                    <img src="sauna.jpg" alt="Sauna">
+                    <h3>Sauna</h3>
+                    <p>Odpocznij i zrelaksuj się w naszej saunie.</p>
+                </div>
+                <div class="offer-item">
+                    <img src="spa.jpg" alt="SPA">
+                    <h3>Spa</h3>
+                    <p>Wybierz się na odprężający masaż i zabiegi SPA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Nasz Cennik</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usługa</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wejście jednorazowe</td>
+                        <td>30 PLN</td>
+                    </tr>
+                    <tr>
+                        <td>Sauna</td>
+                        <td>20 PLN</td>
+                    </tr>
+                    <tr>
+                        <td>Masaż</td>
+                        <td>50 PLN</td>
+                    </tr>
+                    <tr>
+                        <td>Pakiet Spa</td>
+                        <td>150 PLN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>Galeria</h2>
+            <div class="gallery-items">
+                <a href="gallery1.jpg" data-lightbox="mygallery"><img src="termy.jpg" alt="Galeria 1"></a>
+                <a href="gallery2.jpg" data-lightbox="mygallery"><img src="sauna.jpg" alt="Galeria 2"></a>
+                <a href="gallery3.jpg" data-lightbox="mygallery"><img src="spa.jpg" alt="Galeria 3"></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <ul>
+                <li>Adres: ul. Przykładowa 123, 99-200 Oleśnica</li>
+                <li>Telefon: +48 123 456 789</li>
+                <li>Email: kontakt@aquafun.park</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var header = document.querySelector('header');
+            var sticky = header.offsetTop;
+            
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

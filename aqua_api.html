@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFun Park - API GitHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h1>AquaFun Park</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Strona główna</a></li>
+                    <li><a href="#">Oferta</a></li>
+                    <li><a href="#">Cennik</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">Repozytoria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Odkryj relaks i komfort w AquaFun Park</h1>
+            <p>Zapraszamy do AquaFun Park - oazy spokoju i wypoczynku.</p>
+            <a href="#" class="btn-main">Dowiedz się więcej</a>
+        </div>
+    </section>
+
+    <section class="repositories" id="repozytoria">
+        <div class="container">
+            <h2>Repozytoria z GitHub</h2>
+            <div id="repo-list">
+                <!-- Repozytoria będą tutaj ładowane -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Fetch data from GitHub API and display repositories
+        const user = "twoja-nazwa-uzytkownika";
+        const repoList = document.getElementById('repo-list');
+
+        fetch(`https://api.github.com/users/${user}/repos`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(repo => {
+                const repoItem = document.createElement('div');
+                repoItem.className = 'repo-item';
+                repoItem.innerHTML = `
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || "Brak opisu"}</p>
+                    <a href="${repo.html_url}" target="_blank">Zobacz repozytorium</a>
+                `;
+                repoList.appendChild(repoItem);
+            });
+        })
+        .catch(error => {
+            console.error('Błąd przy pobieraniu danych z GitHub API:', error);
+            repoList.innerHTML = '<p>Nie udało się pobrać danych o repozytoriach.</p>';
+        });
+    </script>
+</body>
+</html>
