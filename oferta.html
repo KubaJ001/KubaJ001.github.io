@@ -11,8 +11,8 @@
     <header>
         <div class="top-bar">
             <div class="logo">
-                <img src="logo.png" alt="Logo AquaFun Park" style="float: left; width: 50%;">
-                <h3 style="float: left; width: 50%;">AquaFun Park</h3>
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -30,21 +30,31 @@
         <div class="container">
             <h2>Nasza Oferta</h2>
             <div class="offer-items">
-                <div class="offer-item">
-                    <img src="termy.jpg" alt="Termy">
-                    <h3>Basen termalny</h3>
-                    <p>Oferujemy relaksujące kąpiele w wodach termalnych.</p>
-                </div>
-                <div class="offer-item">
-                    <img src="sauna.jpg" alt="Sauna">
-                    <h3>Sauna</h3>
-                    <p>Odpocznij i zrelaksuj się w naszej saunie.</p>
-                </div>
-                <div class="offer-item">
-                    <img src="spa.jpg" alt="SPA">
-                    <h3>Spa</h3>
-                    <p>Wybierz się na odprężający masaż i zabiegi SPA.</p>
-                </div>
+                <!-- PHP code for dynamically loading offer items -->
+                <?php
+                // Include database connection
+                include 'db_connection.php';
+
+                // Query to fetch offers
+                $result = $conn->query("SELECT * FROM offer");
+
+                // Check if there are results
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="offer-item">';
+                        echo '<img src="' . $row["image"] . '" alt="' . $row["name"] . '">';
+                        echo '<h3>' . $row["name"] . '</h3>';
+                        echo '<p>' . $row["description"] . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>Brak ofert do wyświetlenia.</p>';
+                }
+
+                // Close the database connection
+                $conn->close();
+                ?>
             </div>
         </div>
     </section>
