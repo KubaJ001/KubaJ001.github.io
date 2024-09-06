@@ -4,18 +4,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    require 'db_connect.php';
+    include 'db_connection.php';
 
-    try {
-        $sql = "INSERT INTO contact_form (name, email, message) VALUES (:name, :email, :message)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':message', $message);
-        $stmt->execute();
-        echo "Twoja wiadomość została wysłana!";
-    } catch (PDOException $e) {
-        echo "Błąd: " . $e->getMessage();
+    $sql = "INSERT INTO contact_form (name, email, message) VALUES ('$name', '$email', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Dziękujemy za kontakt! Twoja wiadomość została wysłana.";
+    } else {
+        echo "Błąd: " . $sql . "<br>" . $conn->error;
     }
+
+    $conn->close();
+} else {
+    echo "Invalid request.";
 }
 ?>
