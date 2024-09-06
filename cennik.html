@@ -11,8 +11,8 @@
     <header>
         <div class="top-bar">
             <div class="logo">
-                <img src="logo.png" alt="Logo AquaFun Park" style="float: left; width: 50%;">
-                <h3 style="float: left; width: 50%;">AquaFun Park</h3>
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -37,22 +37,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Wejście jednorazowe</td>
-                        <td>30 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Sauna</td>
-                        <td>20 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Masaż</td>
-                        <td>50 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Pakiet Spa</td>
-                        <td>150 PLN</td>
-                    </tr>
+                    <?php
+                    include 'db_connection.php';
+
+                    $result = $conn->query("SELECT * FROM pricing");
+
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>';
+                            echo '<td>' . $row["service"] . '</td>';
+                            echo '<td>' . number_format($row["price"], 2) . ' PLN</td>';
+                            echo '</tr>';
+                        }
+                    } else {
+                        echo '<tr><td colspan="2">Brak cen do wyświetlenia.</td></tr>';
+                    }
+
+                    $conn->close();
+                    ?>
                 </tbody>
             </table>
         </div>
