@@ -6,13 +6,14 @@
     <title>Galeria - AquaFun Park</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="top-bar">
             <div class="logo">
-                <img src="logo.png" alt="Logo AquaFun Park" style="float: left; width: 50%;">
-                <h3 style="float: left; width: 50%;">AquaFun Park</h3>
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -30,9 +31,22 @@
         <div class="container">
             <h2>Galeria</h2>
             <div class="gallery-items">
-                <a href="gallery1.jpg" data-lightbox="mygallery"><img src="termy.jpg" alt="Galeria 1"></a>
-                <a href="gallery2.jpg" data-lightbox="mygallery"><img src="sauna.jpg" alt="Galeria 2"></a>
-                <a href="gallery3.jpg" data-lightbox="mygallery"><img src="spa.jpg" alt="Galeria 3"></a>
+                <?php
+                include 'db_connection.php';
+
+                $result = $conn->query("SELECT * FROM gallery");
+
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<a href="' . $row["image_path"] . '" data-lightbox="mygallery"><img src="' . $row["image_path"] . '" alt="' . $row["alt_text"] . '"></a>';
+                    }
+                } else {
+                    echo '<p>Brak zdjęć w galerii.</p>';
+                }
+
+                $conn->close();
+                ?>
             </div>
         </div>
     </section>
@@ -42,6 +56,5 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </body>
 </html>
