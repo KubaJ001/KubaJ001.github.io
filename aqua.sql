@@ -38,9 +38,9 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `image_path`, `alt_text`) VALUES
-(1, 'gallery1.jpg', 'Galeria 1'),
-(2, 'gallery2.jpg', 'Galeria 2'),
-(3, 'gallery3.jpg', 'Galeria 3');
+(1, 'termy.jpg', 'Galeria 1'),
+(2, 'sauna.jpg', 'Galeria 2'),
+(3, 'spa.jpg', 'Galeria 3');
 
 -- --------------------------------------------------------
 
