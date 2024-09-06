@@ -1,15 +1,12 @@
 <?php
-$host = 'localhost'; 
-$dbname = 'aqua';  
-$username = 'root';  
-$password = ''; 
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "aqua";
 
-try {
-    // Połączenie z bazą danych
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Połączono z bazą danych!";
-} catch (PDOException $e) {
-    echo "Błąd połączenia: " . $e->getMessage();
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
