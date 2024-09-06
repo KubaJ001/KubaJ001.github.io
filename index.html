@@ -16,7 +16,7 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="aqua.html">Strona główna</a></li>
+                    <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
                     <li><a href="cennik.html">Cennik</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
@@ -57,49 +57,6 @@
         </div>
     </section>
 
-    <section class="pricing">
-        <div class="container">
-            <h2>Nasz Cennik</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Usługa</th>
-                        <th>Cena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Wejście jednorazowe</td>
-                        <td>30 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Sauna</td>
-                        <td>20 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Masaż</td>
-                        <td>50 PLN</td>
-                    </tr>
-                    <tr>
-                        <td>Pakiet Spa</td>
-                        <td>150 PLN</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <section class="gallery">
-        <div class="container">
-            <h2>Galeria</h2>
-            <div class="gallery-items">
-                <a href="gallery1.jpg" data-lightbox="mygallery"><img src="termy.jpg" alt="Galeria 1"></a>
-                <a href="gallery2.jpg" data-lightbox="mygallery"><img src="sauna.jpg" alt="Galeria 2"></a>
-                <a href="gallery3.jpg" data-lightbox="mygallery"><img src="spa.jpg" alt="Galeria 3"></a>
-            </div>
-        </div>
-    </section>
-
     <section class="contact">
         <div class="container">
             <h2>Kontakt</h2>
@@ -119,7 +76,6 @@
         window.onscroll = function() {
             var header = document.querySelector('header');
             var sticky = header.offsetTop;
-            
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
             } else {
@@ -130,7 +86,6 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
