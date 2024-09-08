@@ -8,9 +8,9 @@
 }
 ,{"type":"table","name":"gallery","database":"aqua","data":
 [
-{"id":"1","image_path":"gallery1.jpg","alt_text":"Galeria 1"},
-{"id":"2","image_path":"gallery2.jpg","alt_text":"Galeria 2"},
-{"id":"3","image_path":"gallery3.jpg","alt_text":"Galeria 3"}
+{"id":"1","image_path":"termy.jpg","alt_text":"Galeria 1"},
+{"id":"2","image_path":"sauna.jpg","alt_text":"Galeria 2"},
+{"id":"3","image_path":"spa.jpg","alt_text":"Galeria 3"}
 ]
 }
 ,{"type":"table","name":"offer","database":"aqua","data":
