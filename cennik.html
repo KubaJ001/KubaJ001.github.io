@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cennik - AquaFun Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Nasz Cennik</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usługa</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody id="pricing-table">
+                    <!-- Pricing data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('aqua.json')
+                .then(response => response.json())
+                .then(data => {
+                    const pricingItems = data.find(table => table.name === 'pricing').data;
+                    const pricingTable = document.getElementById('pricing-table');
+                    
+                    pricingItems.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.service}</td>
+                            <td>${item.price} PLN</td>
+                        `;
+                        pricingTable.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error loading JSON data:', error));
+        });
+    </script>
+</body>
+</html>
