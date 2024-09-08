@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta - AquaFun Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="offer">
+        <div class="container">
+            <h2>Nasza Oferta</h2>
+            <div class="offer-items" id="offer-items">
+                <!-- Offer items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('aqua.json')
+                .then(response => response.json())
+                .then(data => {
+                    const offerItems = data.find(table => table.name === 'offer').data;
+                    const offerItemsContainer = document.getElementById('offer-items');
+                    
+                    offerItems.forEach(item => {
+                        const offerItem = document.createElement('div');
+                        offerItem.classList.add('offer-item');
+                        offerItem.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                        `;
+                        offerItemsContainer.appendChild(offerItem);
+                    });
+                })
+                .catch(error => console.error('Error loading JSON data:', error));
+        });
+    </script>
+</body>
+</html>
