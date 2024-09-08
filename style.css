@@ -2,10 +2,12 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+    background: url('termy.jpg') no-repeat center center fixed; /* Tło na stronie głównej */
+    background-size: cover;
 }
 
 header {
-    background: #004d99;
+    background: #003366; /* Jaśniejszy granatowy */
     color: white;
     padding: 10px 0;
 }
@@ -19,12 +21,18 @@ header {
     padding: 0 20px;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     max-width: 100px;
 }
 
 .logo h3 {
     margin: 0;
+    margin-left: 15px; /* Ustawienie napisu obok logo */
 }
 
 .main-nav ul {
@@ -60,7 +68,7 @@ header {
 }
 
 .btn-main {
-    background: #ff6600;
+    background: #004d99; /* Niebieski przycisk */
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -128,7 +136,7 @@ header {
 }
 
 .contact-form button {
-    background: #004d99;
+    background: #004d99; /* Niebieski przycisk */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -137,7 +145,7 @@ header {
 }
 
 footer {
-    background: #004d99;
+    background: #003366; /* Jaśniejszy granatowy */
     color: white;
     text-align: center;
     padding: 10px 0;
