@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - AquaFun Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lightbox.css"> <!-- Jeśli używasz lightbox do galerii -->
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>Galeria</h2>
+            <div class="gallery-items" id="gallery-items">
+                <!-- Gallery items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('aqua.json')
+                .then(response => response.json())
+                .then(data => {
+                    const galleryItems = data.find(table => table.name === 'gallery').data;
+                    const galleryItemsContainer = document.getElementById('gallery-items');
+                    
+                    galleryItems.forEach(item => {
+                        const galleryItem = document.createElement('a');
+                        galleryItem.href = item.image_path;
+                        galleryItem.setAttribute('data-lightbox', 'mygallery');
+                        galleryItem.innerHTML = `
+                            <img src="${item.image_path}" alt="${item.alt_text}">
+                        `;
+                        galleryItemsContainer.appendChild(galleryItem);
+                    });
+                })
+                .catch(error => console.error('Error loading JSON data:', error));
+        });
+    </script>
+    <script src="lightbox.js"></script> <!-- Jeśli używasz lightbox do galerii -->
+</body>
+</html>
