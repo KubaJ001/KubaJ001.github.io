@@ -2,35 +2,29 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
 }
 
 header {
-    background-color: #004080;
-    color: #fff;
+    background: #004d99;
+    color: white;
     padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
 }
 
 .top-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
 .logo img {
-    height: 50px;
-    margin-right: 10px;
+    max-width: 100px;
 }
 
 .logo h3 {
     margin: 0;
-    font-size: 1.5em;
 }
 
 .main-nav ul {
@@ -40,33 +34,44 @@ header {
     display: flex;
 }
 
-.main-nav li {
-    margin-left: 20px;
+.main-nav ul li {
+    margin: 0 15px;
 }
 
-.main-nav a {
-    color: #fff;
+.main-nav ul li a {
+    color: white;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
+    background: url('hero.jpg') no-repeat center center/cover;
+    color: white;
     padding: 100px 20px;
     text-align: center;
 }
 
+.hero-content h1 {
+    font-size: 3em;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+}
+
 .btn-main {
-    background-color: #007BFF;
-    color: #fff;
+    background: #ff6600;
+    color: white;
     padding: 10px 20px;
     text-decoration: none;
+    font-weight: bold;
     border-radius: 5px;
 }
 
-.offer, .pricing, .gallery {
-    padding: 50px 20px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .offer-items, .gallery-items {
@@ -75,38 +80,72 @@ header {
 }
 
 .offer-item, .gallery-item {
-    flex: 1 1 30%;
+    flex: 1;
     margin: 10px;
+    text-align: center;
 }
 
 .offer-item img, .gallery-item img {
     max-width: 100%;
-    height: auto;
     border-radius: 5px;
 }
 
-table {
+.pricing table {
     width: 100%;
     border-collapse: collapse;
 }
 
-table th, table td {
+.pricing th, .pricing td {
     border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+    padding: 8px;
 }
 
-table th {
+.pricing th {
     background-color: #f4f4f4;
 }
 
+.contact-form {
+    background: #f9f9f9;
+    padding: 20px;
+}
+
+.contact-form form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background: #004d99;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 footer {
-    background-color: #004080;
-    color: #fff;
+    background: #004d99;
+    color: white;
     text-align: center;
     padding: 10px 0;
 }
 
 .sticky {
-    background-color: #003366;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
