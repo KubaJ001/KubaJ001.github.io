@@ -2,8 +2,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('termy.jpg') no-repeat center center fixed; /* Tło na stronie głównej */
-    background-size: cover;
 }
 
 header {
@@ -156,4 +154,9 @@ footer {
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+/* Tło tylko dla strony głównej */
+.index-page .hero {
+    background: url('termy.jpg') no-repeat center center/cover;
 }
