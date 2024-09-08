@@ -1,0 +1,31 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"aqua"},
+{"type":"table","name":"contact_form","database":"aqua","data":
+[
+
+]
+}
+,{"type":"table","name":"gallery","database":"aqua","data":
+[
+{"id":"1","image_path":"gallery1.jpg","alt_text":"Galeria 1"},
+{"id":"2","image_path":"gallery2.jpg","alt_text":"Galeria 2"},
+{"id":"3","image_path":"gallery3.jpg","alt_text":"Galeria 3"}
+]
+}
+,{"type":"table","name":"offer","database":"aqua","data":
+[
+{"id":"1","name":"Basen termalny","description":"Oferujemy relaksujące kąpiele w wodach termalnych.","image":"termy.jpg"},
+{"id":"2","name":"Sauna","description":"Odpocznij i zrelaksuj się w naszej saunie.","image":"sauna.jpg"},
+{"id":"3","name":"Spa","description":"Wybierz się na odprężający masaż i zabiegi SPA.","image":"spa.jpg"}
+]
+}
+,{"type":"table","name":"pricing","database":"aqua","data":
+[
+{"id":"1","service":"Wejście jednorazowe","price":"30.00"},
+{"id":"2","service":"Sauna","price":"20.00"},
+{"id":"3","service":"Masaż","price":"50.00"},
+{"id":"4","service":"Pakiet Spa","price":"150.00"}
+]
+}
+]
