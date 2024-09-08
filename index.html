@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna - AquaFun Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo AquaFun Park">
+                <h3>AquaFun Park</h3>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Odkryj relaks i komfort w AquaFun Park</h1>
+            <p>Zapraszamy do AquaFun Park - oazy spokoju i wypoczynku.</p>
+            <a href="oferta.html" class="btn-main">Dowiedz się więcej</a>
+        </div>
+    </section>
+
+    <section class="offer">
+        <div class="container">
+            <h2>Nasza Oferta</h2>
+            <div class="offer-items" id="offer-items">
+                <!-- Offer items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Nasz Cennik</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usługa</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody id="pricing-table">
+                    <!-- Pricing data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>Galeria</h2>
+            <div class="gallery-items" id="gallery-items">
+                <!-- Gallery items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AquaFun Park. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('aqua.json')
+                .then(response => response.json())
+                .then(data => {
+                    const offerItems = data.find(table => table.name === 'offer').data;
+                    const pricingItems = data.find(table => table.name === 'pricing').data;
+                    const galleryItems = data.find(table => table.name === 'gallery').data;
+
+                    // Populate offer section
+                    const offerItemsContainer = document.getElementById('offer-items');
+                    offerItems.forEach(item => {
+                        const offerItem = document.createElement('div');
+                        offerItem.classList.add('offer-item');
+                        offerItem.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                        `;
+                        offerItemsContainer.appendChild(offerItem);
+                    });
+
+                    // Populate pricing section
+                    const pricingTable = document.getElementById('pricing-table');
+                    pricingItems.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.service}</td>
+                            <td>${item.price} PLN</td>
+                        `;
+                        pricingTable.appendChild(row);
+                    });
+
+                    // Populate gallery section
+                    const galleryItemsContainer = document.getElementById('gallery-items');
+                    galleryItems.forEach(item => {
+                        const galleryItem = document.createElement('a');
+                        galleryItem.href = item.image_path;
+                        galleryItem.setAttribute('data-lightbox', 'mygallery');
+                        galleryItem.innerHTML = `
+                            <img src="${item.image_path}" alt="${item.alt_text}">
+                        `;
+                        galleryItemsContainer.appendChild(galleryItem);
+                    });
+                })
+                .catch(error => console.error('Error loading JSON data:', error));
+        });
+
+        window.onscroll = function() {
+            var header = document.querySelector('header');
+            var sticky = header.offsetTop;
+
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
